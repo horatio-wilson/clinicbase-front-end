@@ -15,7 +15,12 @@
 
 </head>
 <body>
-    <div class="container">
+    <div class="container" *ngIf="isSuccessful">
+        <div class="d-flex justify-content-center h-100">
+            <h3 style="color:White;">Thank you for registering</h3>
+        </div>
+    </div>
+    <div class="container" *ngIf="!isSuccessful">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
@@ -27,41 +32,44 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            </div>
-                            <input type="text" class="form-control" [(ngModel)]="form.user.firstName" id="firstName" name="firstName" placeholder="first name">						
+                    <form   name="form"
+                            (ngSubmit)="f.form.valid && onSubmit()"
+                            #f="ngForm"
+                            novalidate>
+                        <div class="form-group">
+                            <input type="submit" value="Register" class="btn float-right login_btn">
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" [(ngModel)]="form.user.lastName" id="lastName" name="lastName" placeholder="last name">						
+                            <input type="text" class="form-control" [(ngModel)]="form.firstName" id="firstName" name="firstName" placeholder="first name">						
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" [(ngModel)]="form.user.email" id="email" name="email" placeholder="email">						
+                            <input type="text" class="form-control" [(ngModel)]="form.lastName" id="lastName" name="lastName" placeholder="last name">						
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" [(ngModel)]="form.email" id="email" name="email" placeholder="email">						
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" [(ngModel)]="form.user.password" id="password" name="password" placeholder="password">
+                            <input type="password" class="form-control" [(ngModel)]="form.password" id="password" name="password" placeholder="password">
                         </div>
-                        <div class="form-group">
-                            <input type="submit" value="Register" class="btn float-right login_btn">
-                        </div>
-                        <br><br>
+                        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                            Signup failed!<br />{{ errorMessage }}
+                          </div>
                     </form>
-                    <br><br>
                 </div>
                 
                 <div class="card-footer">
-                    <br><br>
                     <div class="d-flex justify-content-center links">
                         Already have an account?&nbsp;<a (click)="redirectToLogin()" href="javascript:void(0);">Login here</a>
                     </div>
