@@ -4,14 +4,6 @@ html,body{
 background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
 background-size: cover;
 background-repeat: no-repeat;
-position: fixed;
-/* margin-top: 50px; */
-margin-bottom:50px;
-top: 50%;
-left: 50%;
-height: 580px;
-width: 580px;
-transform: translate(-50%, -50%);
 font-family: 'Numans', sans-serif;
 }
 
@@ -21,7 +13,7 @@ align-content: center;
 }
 
 .card{
-height: 370px;
+height: fit-content;
 margin-top: auto;
 margin-bottom: auto;
 width: 400px;
@@ -43,15 +35,10 @@ cursor: pointer;
 color: white;
 }
 
-/* .card-body{
-padding-bottom: 2em;
-margin-bottom: 70px;
-} */
-
 .social_icon{
 position: absolute;
 right: 20px;
-top: -45px;
+top: 0;
 }
 
 .input-group-prepend span{

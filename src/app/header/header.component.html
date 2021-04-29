@@ -1,0 +1,44 @@
+<div id="app">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <a href="#" class="navbar-brand">ClinicBase</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+        <li class="nav-item" *ngIf="showEmployeeBoard">
+          <a href="/employee" class="nav-link" routerLink="employee">Employee Board</a>
+        </li>
+        <li class="nav-item" *ngIf="showDoctorBoard">
+          <a href="/doctor" class="nav-link" routerLink="doctor">Doctor Board</a>
+        </li>
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+        </li>
+        <li class="nav-item" *ngIf="showSuperAdminBoard">
+          <a href="/super-admin" class="nav-link" routerLink="super-admin">Super Admin Board</a>
+        </li>
+        <li class="nav-item">
+          <a href="/dashboard" class="nav-link" *ngIf="isLoggedIn" routerLink="dashboard">Dashboard</a>
+        </li>
+      </ul>
+  
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <li class="nav-item">
+          <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login" class="nav-link" routerLink="login">Login</a>
+        </li>
+      </ul>
+  
+      <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+        <li class="nav-item">
+          <a href="/profile" class="nav-link" routerLink="profile">{{ email }}</a>
+        </li>
+        <li class="nav-item">
+          <a href class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

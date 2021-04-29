@@ -15,6 +15,8 @@ import { DashboardEmployeeComponent } from './dashboard-employee/dashboard-emplo
 import { DashboardDoctorComponent } from './dashboard-doctor/dashboard-doctor.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     DashboardAdminComponent,
     DashboardSuperAdminComponent,
     DashboardEmployeeComponent,
-    DashboardDoctorComponent
+    DashboardDoctorComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
