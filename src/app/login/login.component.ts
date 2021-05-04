@@ -38,13 +38,17 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        this.redirectToDashboard();
       },
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
     );
+  }
+
+  redirectToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 
   redirectToRegister() {
